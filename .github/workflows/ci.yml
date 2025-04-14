@@ -2,7 +2,8 @@ name: Expo + Supabase CI/CD
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   build:
@@ -20,19 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Run Lint (optional)
-        run: npm run lint || echo "Lint warnings"
-
-      - name: TypeScript Check (optional)
-        run: npx tsc --noEmit || true
-
-      - name: Install Supabase CLI
-        run: npm install -g supabase
+      - name: Download Supabase CLI
+        run: |
+          curl -sL https://github.com/supabase/cli/releases/latest/download/supabase-cli-linux-amd64 > supabase
+          chmod +x supabase
+          sudo mv supabase /usr/local/bin/supabase
 
       - name: Authenticate Supabase CLI
-        run: supabase login --token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: supabase login --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 
-      - name: Generate Types from Supabase
-        run: |
-          mkdir -p src/lib
-          supabase gen types typescript --project-id ejhwtgkublavsnmdibfv > src/lib/supabase-types.ts
+      - name: Generate types from Supabase
+        run: supabase gen types typescript --project-id ejhwtgkublavsnmdibfv --schema public > supabase-types.ts
