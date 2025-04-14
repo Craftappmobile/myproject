@@ -21,11 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Install Supabase CLI via npm
-        run: npm install -g supabase
-
       - name: Authenticate Supabase CLI
-        run: supabase login --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: npx supabase login --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 
       - name: Generate types from Supabase
-        run: supabase gen types typescript --project-id ejhwtgkublavsnmdibfv --schema public > supabase-types.ts
+        run: npx supabase gen types typescript --project-id ejhwtgkublavsnmdibfv --schema public > supabase-types.ts
+
