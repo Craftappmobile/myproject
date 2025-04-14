@@ -23,7 +23,8 @@ jobs:
 
       - name: Download Supabase CLI
         run: |
-          curl -sL https://github.com/supabase/cli/releases/download/v1.153.7/supabase_1.153.7_linux_amd64.tar.gz | tar -xz
+          wget https://github.com/supabase/cli/releases/download/v1.153.7/supabase_1.153.7_linux_amd64.tar.gz
+          tar -xzf supabase_1.153.7_linux_amd64.tar.gz
           sudo mv supabase /usr/local/bin/supabase
 
       - name: Authenticate Supabase CLI
