@@ -1,0 +1,38 @@
+name: Expo + Supabase CI/CD
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Lint (optional)
+        run: npm run lint || echo "Lint warnings"
+
+      - name: TypeScript Check (optional)
+        run: npx tsc --noEmit || true
+
+      - name: Install Supabase CLI
+        run: npm install -g supabase
+
+      - name: Authenticate Supabase CLI
+        run: supabase login --token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+      - name: Generate Types from Supabase
+        run: |
+          mkdir -p src/lib
+          supabase gen types typescript --project-id ejhwtgkublavsnmdibfv > src/lib/supabase-types.ts
