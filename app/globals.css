@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Основні кольори з приглушеної зеленої палітри */
+    --background: 120 20% 96%; /* Дуже світлий зелений фон */
+    --foreground: 120 20% 25%; /* Темний зелений текст */
+
+    --card: 120 20% 96%;
+    --card-foreground: 120 20% 25%;
+
+    --popover: 120 20% 96%;
+    --popover-foreground: 120 20% 25%;
+
+    /* Основний колір - зелений мох */
+    --primary: 120 15% 49%; /* Зелений мох */
+    --primary-foreground: 120 20% 96%;
+
+    /* Вторинний колір - світлий шалфей */
+    --secondary: 120 15% 85%; /* Світлий шалфей */
+    --secondary-foreground: 120 20% 25%;
+
+    /* Приглушений колір - світлий зелений */
+    --muted: 120 15% 92%;
+    --muted-foreground: 120 10% 40%;
+
+    /* Акцентний колір - оливковий */
+    --accent: 90 20% 65%; /* Оливковий */
+    --accent-foreground: 120 20% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 120 20% 96%;
+
+    --border: 120 15% 85%;
+    --input: 120 15% 85%;
+    --ring: 120 15% 49%; /* Зелений мох */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 120 15% 15%; /* Темний зелений фон */
+    --foreground: 120 10% 90%; /* Світлий зелений текст */
+
+    --card: 120 15% 15%;
+    --card-foreground: 120 10% 90%;
+
+    --popover: 120 15% 15%;
+    --popover-foreground: 120 10% 90%;
+
+    --primary: 120 15% 49%; /* Зелений мох */
+    --primary-foreground: 120 20% 96%;
+
+    --secondary: 120 10% 25%; /* Темний зелений */
+    --secondary-foreground: 120 10% 90%;
+
+    --muted: 120 10% 20%;
+    --muted-foreground: 120 10% 70%;
+
+    --accent: 90 15% 35%; /* Темний оливковий */
+    --accent-foreground: 120 10% 90%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 120 10% 90%;
+
+    --border: 120 15% 30%;
+    --input: 120 15% 30%;
+    --ring: 120 15% 49%; /* Зелений мох */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
