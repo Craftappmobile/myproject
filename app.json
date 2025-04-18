@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ExpoSupabaseStarter",
-    "slug": "ExpoSupabaseStarter",
-    "scheme": "expo-supabase-starter",
+    "name": "Розрахуй і В'яжи",
+    "slug": "calculate-and-knit",
+    "scheme": "calculate-and-knit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -41,7 +41,7 @@
           "image": "./assets/splash-dark.png"
         }
       },
-      "package": "com.anonymous.ExpoSupabaseStarter"
+      "package": "com.calculate.and.knit"
     },
     "experiments": {
       "typedRoutes": true

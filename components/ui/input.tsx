@@ -1,12 +1,30 @@
 import * as React from "react";
-import { TextInput } from "react-native";
+import { TextInput, Platform, StyleSheet } from "react-native";
 
 import { cn } from "@/lib/utils";
+
+// Визначаємо базовий шрифт для різних платформ
+const getDefaultFontFamily = () => {
+  if (Platform.OS === 'android') {
+    return 'Roboto'; // Використовуємо Roboto для Android
+  } else if (Platform.OS === 'ios') {
+    return 'System'; // Використовуємо системний шрифт для iOS
+  }
+  return undefined;
+};
 
 const Input = React.forwardRef<
 	React.ElementRef<typeof TextInput>,
 	React.ComponentPropsWithoutRef<typeof TextInput>
->(({ className, placeholderClassName, ...props }, ref) => {
+>(({ className, placeholderClassName, style, ...props }, ref) => {
+	// Додаємо шрифт до стилю
+	const fontFamily = getDefaultFontFamily();
+	const combinedStyle = [
+	  style,
+	  fontFamily ? { fontFamily } : null,
+	  styles.input
+	];
+	
 	return (
 		<TextInput
 			ref={ref}
@@ -16,9 +34,18 @@ const Input = React.forwardRef<
 				className,
 			)}
 			placeholderClassName={cn("text-muted-foreground", placeholderClassName)}
+			style={combinedStyle}
 			{...props}
 		/>
 	);
+});
+
+const styles = StyleSheet.create({
+  input: {
+    // Додаткові стилі для вирішення проблем з кодуванням
+    includeFontPadding: false,
+    textAlignVertical: 'center',
+  }
 });
 
 Input.displayName = "Input";

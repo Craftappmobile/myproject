@@ -47,3 +47,25 @@
 		--ring: 240 4.9% 83.9%;
 	}
 }
+
+/* Додаємо підтримку шрифтів */
+@layer base {
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto_Bold', sans-serif;
+  }
+}
+
+/* Додаємо утиліти для шрифтів */
+@layer utilities {
+  .font-roboto {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .font-roboto-bold {
+    font-family: 'Roboto_Bold', sans-serif;
+  }
+}
